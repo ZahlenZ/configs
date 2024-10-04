@@ -1,0 +1,9 @@
+[[language]]
+name = "sql"
+scope = "source.sql"
+file-types = ["sql"]
+indent = { tab-width = 4, unit = "    "}
+language-servers = ["sqls"]
+
+[language-server.sqls]
+command = "sql_login"

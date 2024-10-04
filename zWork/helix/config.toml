@@ -1,0 +1,53 @@
+theme = "catppuccin_mocha"
+
+[editor]
+mouse = false
+cursorline = true
+color-modes = true
+true-color = true
+line-number = "relative"
+gutters = ["diagnostics", "line-numbers", "diff", "spacer"]
+
+[editor.statusline]
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
+left = ["mode", "spinner","file-modification-indicator", "file-absolute-path"]
+center = []
+right = ["diagnostics", "selections", "position"]
+separator = "|"
+
+[editor.lsp]
+enable = true
+display-messages = true
+# may be buggy
+display-inlay-hints = true 
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+"'" = "'"
+
+[editor.indent-guides]
+render = false
+
+[keys.normal]
+x = "extend_line"
+C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
+[keys.select]
+";" = ["collapse_selection", "normal_mode"]
+x = "extend_line"

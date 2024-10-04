@@ -1,0 +1,59 @@
+swap_tiled_layout name="single pane" {
+    ui exact_panes=4 {
+        pane split_direction="horizontal" {
+            pane split_direction="vertical" {
+                pane name="sidebar" {
+                    command "env"
+                    args "YAZI_CONFIG_HOME=~/.config/yazi/sidebar" "yazi"
+                    size "15%"
+                }
+                pane
+            }
+            pane name="shell" {
+                command "zsh"
+                size "30%"
+            }
+        }
+    }
+}
+
+swap_tiled_layout name="sidebar" {
+    ui min_panes=5 {
+        pane split_direction="horizontal" {
+            pane split_direction="vertical" {
+                pane name="sidebar" {
+                    command "env"
+                    args "YAZI_CONFIG_HOME=~/.config/yazi/sidebar" "yazi"
+                    size "15%"
+                }
+                pane
+                pane stacked=true { children; }
+            }
+            pane name="shell" {
+                command "zsh"
+                size "30%"
+            }
+        }
+    }
+}
+
+swap_tiled_layout name="no sidebar" {
+    ui min_panes=5 {
+        pane split_direction="horizontal" {
+            pane split_direction="vertical" {
+                pane name="sidebar" {
+                    command "env"
+                    args "YAZI_CONFIG_HOME=~/.config/yazi/sidebar" "yazi"
+                    size "1%"
+                }
+                pane
+                pane stacked=true { children; }
+            }
+            pane name="shell" {
+                command "zsh"
+                size "30%"
+            }
+        }
+    }
+}
+

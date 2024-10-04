@@ -1,0 +1,16 @@
+lowercaseKeywords: true
+connections:
+  - alias: "MRP Prod"
+    driver: mssql
+    proto: tcp
+    user: MALARKEY\\zzbinden
+    passwd: BigZLZ!10221927
+    host: mrp-pdx-dw01
+    port: 1433
+  - alias: "MRP Dev"
+    driver: mssql
+    proto: tcp
+    user: MALARKEY\\zzbinden
+    passwd: BigZLZ!10221927
+    host: mrp-pdx-dw02
+    port: 1433

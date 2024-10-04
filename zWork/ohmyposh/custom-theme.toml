@@ -1,0 +1,85 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDeobbeleer/oh-my-posh/main/themes/schema.json"
+final_space = true
+version = 2
+
+[palette]
+rosewater = "#F5E0DC"
+flamingo = "#F2CDCD"
+pink = "#F5C2E7"
+mauve = "#CBA6F7"
+red = "#F38BA8"
+maroon = "#EBA0AC"
+peach = "#FAB387"
+yellow = "#F9E2AF"
+green = "#A6E3A1"
+teal = "#94E2D5"
+sky = "#89DCEB"
+sapphire = "#74C7EC"
+blue = "#89B4FA"
+lavender = "#B4BEFE"
+text = "#CDD6F4"
+subtext1 = "#BAC2DE"
+subtext0 = "#A6ADC8"
+overlay2 = "#9399B2"
+overlay1 = "#7F849C"
+overlay0 = "#6C7086"
+surface2 = "#585B70"
+surface1 = "#45475A"
+surface0 = "#313244"
+base = "#1E1E2E"
+mantle = "#181825"
+crust = "#11111B"
+true = "p:green"
+false = "p:red"
+time = "p:overlay1"
+os-fg = "p:base"
+os-bg = "p:overlay1"
+root-fg = "p:base"
+root-bg = "p:yellow"
+path = "p:yellow"
+git = "p:lavender"
+docker = "p:sky"
+go = "p:mauve"
+haskell = "p:mauve"
+julia = "p:mauve"
+lua = "p:mauve"
+python = "p:mauve"
+rust = "p:mauve"
+
+[transient_prompt]
+template = "❯ "
+foreground = "p:lavender"
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+[[blocks.segments]]
+type = "session"
+style = "diamond"
+foreground = "p:os-fg"
+background= "p:os-bg"
+leading_diamond = ""
+trailing_diamond = ""
+template = "{{ .UserName }}"
+
+[[blocks.segments]]
+type = "path"
+style = "powerline"
+powerline_symbol = ""
+background = "p:lavender"
+foreground = "p:os-fg"
+template = "{{ .Path }}"
+
+[blocks.segments.properties]
+style = "agnoster_short"
+folder_icon = ""
+home_icon = " "
+folder_separator_icon = "  "
+max_depth = 1
+
+[[blocks.segments]]
+type = "text"
+style = "plain"
+template = "\n 󱞩"

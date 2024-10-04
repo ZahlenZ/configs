@@ -1,0 +1,9 @@
+[manager]
+show_hidden = true
+ratio = [0, 4, 0]
+
+[opener]
+edit = [
+  { run = '~/code/script/zelix_open_file.sh $1', desc = "Open File in New Pane" }
+]
+
