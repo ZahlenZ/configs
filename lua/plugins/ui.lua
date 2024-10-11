@@ -44,17 +44,6 @@ return {
           previewer = false,
         })
       end, { desc = "[/] Fuzzily search in current buffer" })
-
-      vim.keymap.set("n", "<leader>s/", function()
-        builtin.live_grep {
-          grep_open_files = true,
-          prompt_title = "Live Grep in Open Files",
-        }
-      end, { desc = "[S]earch [/] in Open Files" })
-
-      vim.keymap.set("n", "<leader>sn", function()
-        builtin.find_files { cwd = vim.fn.stdpath "config" }
-      end, { desc = "[S]earch [N]eovim files" })
     end,
   },
   {
@@ -63,6 +52,9 @@ return {
       { "nvim-tree/nvim-web-devicons" }
     },
     config = function()
+      local function get_time()
+        return " " .. os.date("%R")
+      end
       require("lualine").setup {
         options = {
           theme = "catppuccin-mocha",
@@ -75,19 +67,9 @@ return {
           lualine_c = {
             '%=', --[[ add your center compoentnts here in place of this comment ]]
           },
-          lualine_x = {},
-          lualine_y = { 'filetype', 'progress' },
-          lualine_z = {
-            { 'location', separator = { right = '' }, left_padding = 2 },
-          },
-        },
-        inactive_sections = {
-          lualine_a = { 'filename' },
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = { 'location' },
+          lualine_x = { "%=" },
+          lualine_y = { "filetype", 'location' },
+          lualine_z = { {  get_time, separator = {right = "" }, left_padding = 2  } },
         },
         tabline = {},
         extensions = {},
@@ -97,6 +79,9 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    dependencies = {
+      "rcarriga/nvim-notify"
+    },
     opts = {
       lsp = {
         override = {
@@ -109,13 +94,10 @@ return {
         {
           filter = {
             event = "msg_show",
-            any = {
-              { find = "%d+L, %d+B" },
-              { find = "; after #%d+" },
-              { find = "; before #%d+" },
-            },
+            kind = "",
+            find = "written",
           },
-          view = "mini",
+          opts = { skip = true },
         },
       },
       presets = {
@@ -124,7 +106,6 @@ return {
         long_message_to_split = true,
       },
     },
-    -- stylua: ignore
     keys = {
       { "<leader>sn", "", desc = "+noice"},
       { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
@@ -137,14 +118,11 @@ return {
       { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
     },
     config = function(_, opts)
-      -- HACK: noice shows messages from before it was enabled,
-      -- but this is not ideal when Lazy is installing plugins,
-      -- so clear the messages in this case.
       if vim.o.filetype == "lazy" then
         vim.cmd([[messages clear]])
       end
       require("noice").setup(opts)
     end,
-  }
+  },
 
-} 
+}
