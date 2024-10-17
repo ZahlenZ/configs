@@ -14,7 +14,7 @@ vim.opt.pumheight = 10
 -- cursor stuff
 vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 vim.opt.cursorline = true
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 8
 
 -- status & gutter 

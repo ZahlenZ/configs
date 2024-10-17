@@ -122,7 +122,26 @@ return {
         vim.cmd([[messages clear]])
       end
       require("noice").setup(opts)
+      require("notify").setup({
+        background_colour = "#000000",
+      })
     end,
   },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" }
+    },
+    config = function(_, opts)
+      local harpoon = require("harpoon")
+      harpoon:setup()
+
+      vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+      vim.keymap.set("n", "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end)
+      vim.keymap.set("n", "<leader>hp", function() harpoon:list():next() end)
+    end
+  }
 
 }

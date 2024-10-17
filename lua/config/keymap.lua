@@ -6,8 +6,8 @@ vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true,
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, silent = true, expr = true }) 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
-vim.keymap.set("n", "j", "jzz", { noremap = true, silent = true })
-vim.keymap.set("n", "k", "kzz", { noremap = true, silent = true })
+-- vim.keymap.set("n", "j", "jzz", { noremap = true, silent = true })
+-- vim.keymap.set("n", "k", "kzz", { noremap = true, silent = true })
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
 
 -- move lines
@@ -17,9 +17,8 @@ vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { noremap = true, silent = true
 -- clear search <esc>
 vim.keymap.set({ "i", "n" }, "<Esc>", "<cmd>noh<cr><Esc>", { noremap = true, silent = true })
 
--- do something with indenting 
--- should be able to highlight
--- spam < & > to move indent
+-- Save File
+vim.keymap.set({ "n", "i", "x", "s" }, "<C-s>", "<cmd>w<cr><Esc>", { noremap = true, silent = true, desc = "Save File"})
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
