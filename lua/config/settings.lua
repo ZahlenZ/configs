@@ -6,6 +6,7 @@ vim.opt.cmdheight = 1 -- hide CMD Line when not used
 vim.opt.showtabline = 0 -- no tabs
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.colorcolumn = "88"
 
 -- popups
 vim.opt.pumblend = 10
@@ -16,6 +17,7 @@ vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 8
+vim.opt.mouse = ""
 
 -- status & gutter 
 -- lazyvim has a whole status column util
@@ -78,9 +80,11 @@ vim.api.nvim_create_autocmd("FileType", {
 -- wraps
 vim.opt.wrap = false
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "qmd", "rmd", "ipynb", },
+  pattern = { "markdown", "qmd", "rmd", "ipynb", "help" },
   callback = function()
     vim.opt.wrap = true
+    vim.opt.linebreak = true
+    vim.opt.showbreak = " " 
   end,
 })
 

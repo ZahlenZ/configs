@@ -1,4 +1,0 @@
--- linting
-return {
-	
-}
